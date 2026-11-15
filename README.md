@@ -76,8 +76,35 @@ Vehicle SDK AAR 은 Pleos Playground 에서만 받을 수 있어 저장소에 �
 
 | 항목 | 값 |
 |---|---|
-| 에뮬레이터 버전 | (Playground 에서 확인 후 기입) |
-| 화면 규격 | (해상도 · dpi 기입) |
+| 에뮬레이터 | Pleos Connect Emulator (Android Studio AVD, Automotive 디바이스) |
+| 시스템 이미지 | Pleos Connect System Image 2.x, Android API 34 |
+| 이미지 저장소 | Windows/Linux `https://nexus-playground.pleos.ai/repository/raw-releases/connect-avd/2.x/crp-sys-img.xml` · Mac `.../connect-avd/2.x/crp-arm64-sys-img.xml` |
+| AVD 설정 | Boot option Cold boot, RAM 4 GB (Pleos 개발 가이드 권장값) |
+| 화면 규격 | Pleos Connect Automotive 디바이스 기본 프로필, 가로(Landscape) 앱 윈도우 전체 모드 기준으로 레이아웃 설계 |
+| 앱 요구 사항 | minSdk 29 (가이드 기준 API 28 이상 충족), compileSdk·targetSdk 34 |
+
+> 개발 PC 사양 문제로 에뮬레이터 실기동 캡처 대신, 앱 코드(Jetpack Compose)와 같은 레이아웃·색상 토큰으로 그린 화면 재현 이미지를 함께 첨부합니다. 에뮬레이터에서 `adb shell wm size`, `adb shell wm density` 로 확인한 해상도는 확보 후 이 표에 추가합니다.
+
+### 설치 방법 (Pleos Connect Emulator)
+
+1. Android Studio → Tools → SDK Manager → SDK Update Sites → Add 에 위 이미지 저장소 URL 등록
+2. SDK Platforms 에서 API 34 Pleos Connect system image 설치 후 Android Studio 재시작
+3. Tools → Device Manager → Create device → Automotive → Pleos Connect 디바이스 생성 (Cold boot, RAM 4 GB)
+4. 에뮬레이터 실행 후 APK 파일을 창으로 드래그 앤 드롭하거나 `adb install -r apk/오._RegenCoach_release.apk`
+
+일반 Android 태블릿·에뮬레이터(Android 10 이상)에서도 시뮬레이션 모드로 실행됩니다. 휴대폰은 가로 방향으로 확인하세요.
+
+## 화면
+
+화면 재현 이미지 (Day 테마, 가로 1600×900 기준)
+
+| 실시간 코칭 (회생 + 마찰) | 트립 리포트 (P 전환 시) |
+|---|---|
+| ![실시간 코칭](docs/screen_coaching.png) | ![트립 리포트](docs/screen_trip_report.png) |
+
+- 왼쪽: 3색 링 게이지(파랑 회생 / 주황 마찰), 현재 제동 상태, 예측 감속 안내 바
+- 오른쪽: 시연 콘솔(가상 주행 조작)과 SDK·API 호출 기록
+- P 전환 시: 회생량, 감속 점수, CO₂ 감축, 회생 비율, 에코 포인트
 
 ## 프로젝트 구조
 
