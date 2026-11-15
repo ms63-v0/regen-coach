@@ -106,9 +106,30 @@ Vehicle SDK AAR 은 Pleos Playground 에서만 받을 수 있어 저장소에 �
 - 오른쪽: 시연 콘솔(가상 주행 조작)과 SDK·API 호출 기록
 - P 전환 시: 회생량, 감속 점수, CO₂ 감축, 회생 비율, 에코 포인트
 
+## 디자인 시스템
+
+앱 화면은 팀이 정리한 [Pleos Design System v2](docs/pleos-design-system.html) 를 기준으로 만들었습니다. 브라우저에서 파일을 열면 색·타이포·컴포넌트·SDK 연동 패턴·출품 체크리스트를 볼 수 있습니다.
+
+| 디자인 시스템 규칙 | 앱 반영 위치 |
+|---|---|
+| Day / Night 색 토큰 | `ui/theme/Theme.kt` 의 `DayColors`, `NightColors` |
+| 간격·모서리 토큰 (4~48dp, 14/20/28dp) | `PdsSpace`, `PdsRadius` |
+| 주행 중 터치 최소 76dp, 주요 액션 96dp | `PdsTouch`, 시연 콘솔·코칭 끄기 버튼 |
+| 주행 중 숫자·문장 최소화, 상세 정보는 P단에서 | 링 게이지는 색만 표시, 트립 리포트는 P 전환 시 표시 |
+| SDK 다섯 상태 (Loading·Ready·Unsupported·PermissionRequired·Error) | `data/VehicleData.kt` 의 `VehicleUi`, 화면의 `StateView` |
+| 상태바 정보(시계·배터리·속도) 중복 금지 | 앱 상단에 시계·배터리 표시 없음 |
+| 앱 아이콘 둥근 사각 + 그라디언트 | `res/drawable/ic_launcher_*` |
+
+> 출처: 디자인 시스템 문서의 드라이빙 뷰 등 화면 이미지는 Pleos Connect 공식 화면 목업 캡처를 공모전 참고용으로 사용했습니다. 현대자동차그룹·Pleos 로고와 공식 앱 아이콘은 포함하지 않았으며, 색 토큰은 공식 System Color 가 아닌 팀 정의 값입니다.
+
 ## 프로젝트 구조
 
 ```
+docs/
+├─ pleos-design-system.html      # 디자인 시스템 문서
+├─ screen_coaching.png           # 화면 재현 이미지
+└─ screen_trip_report.png
+
 app/src/main/java/com/team_o/regencoach/
 ├─ MainActivity.kt
 ├─ RegenViewModel.kt
