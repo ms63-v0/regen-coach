@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.RegenCoach" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/win_night</item>
+        <item name="android:statusBarColor">@color/win_night</item>
+    </style>
+    <color name="win_night">#15181D</color>
+</resources>

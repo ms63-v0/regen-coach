@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.RegenCoach" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/win_day</item>
+        <item name="android:statusBarColor">@color/win_day</item>
+    </style>
+    <color name="win_day">#F7F7F8</color>
+    <color name="ic_start">#5B6CF0</color>
+    <color name="ic_end">#2FB3E0</color>
+</resources>
